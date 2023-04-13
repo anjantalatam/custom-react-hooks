@@ -1,0 +1,17 @@
+.parent-div {
+  height: 50vh;
+  background: green;
+  overflow: auto;
+  padding: 2rem;
+  margin: 2rem auto;
+  width: 100%;
+}
+
+.child-div {
+  height: 100vh;
+  background: yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
