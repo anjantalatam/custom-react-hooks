@@ -16,7 +16,7 @@ function App() {
         </div>
       </div>
       {isScrollComplete && (
-        <h3 style={{ textAlign: "center" }}>Scroll is Complete ✅</h3>
+        <p style={{ textAlign: "center" }}>Scroll is Complete ✅</p>
       )}
     </div>
   );
