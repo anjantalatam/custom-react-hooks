@@ -20,6 +20,8 @@ function useIsScrollComplete<TElement extends HTMLElement | null>({
 
     if (Math.abs(scrollHeight - clientHeight - scrollTop) < THRESHOLD) {
       setIsScrollComplete(true);
+    } else {
+      setIsScrollComplete(false);
     }
   }, []);
 
