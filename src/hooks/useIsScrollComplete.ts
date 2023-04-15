@@ -1,4 +1,4 @@
-import React, { RefObject, useCallback, useEffect, useState } from "react";
+import { RefObject, useCallback, useEffect, useState } from "react";
 
 interface IUseIsScrollComplete<TElement> {
   ref: RefObject<TElement>;
@@ -40,7 +40,7 @@ function useIsScrollComplete<TElement extends HTMLElement | null>({
         targetElement.removeEventListener("scroll", onScroll);
       };
     }
-  }, [isScrollComplete]);
+  }, [isScrollComplete, markAsComplete, onScroll, querySelector, ref]);
 
   return { isScrollComplete };
 }
