@@ -17,7 +17,6 @@ function useIsScrollComplete<TElement extends HTMLElement>({
 
   const onScroll: EventListener = useCallback(({ currentTarget }) => {
     const { scrollHeight, clientHeight, scrollTop } = currentTarget as TElement;
-    console.log(scrollHeight, clientHeight, scrollTop);
 
     if (Math.abs(scrollHeight - clientHeight - scrollTop) < THRESHOLD) {
       setIsScrollComplete(true);
@@ -45,11 +44,13 @@ function useIsScrollComplete<TElement extends HTMLElement>({
       if (isScrollComplete && markAsComplete) {
         targetElement.removeEventListener("scroll", onScroll);
       }
-
-      return () => {
-        targetElement.removeEventListener("scroll", onScroll);
-      };
     }
+
+    return () => {
+      if (targetElement) {
+        targetElement.removeEventListener("scroll", onScroll);
+      }
+    };
   }, [isScrollComplete, markAsComplete, onScroll, querySelector, ref]);
 
   return { isScrollComplete };
