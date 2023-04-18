@@ -8,15 +8,16 @@ interface IUseIsScrollComplete<TElement> {
 
 const THRESHOLD = 1;
 
-function useIsScrollComplete<TElement extends HTMLElement | null>({
+function useIsScrollComplete<TElement extends HTMLElement>({
   ref,
   querySelector,
   markAsComplete = true,
 }: IUseIsScrollComplete<TElement>) {
   const [isScrollComplete, setIsScrollComplete] = useState(false);
 
-  const onScroll: EventListener = useCallback(({ target }) => {
-    const { scrollHeight, clientHeight, scrollTop } = target as Element;
+  const onScroll: EventListener = useCallback(({ currentTarget }) => {
+    const { scrollHeight, clientHeight, scrollTop } = currentTarget as TElement;
+    console.log(scrollHeight, clientHeight, scrollTop);
 
     if (Math.abs(scrollHeight - clientHeight - scrollTop) < THRESHOLD) {
       setIsScrollComplete(true);
