@@ -4,10 +4,10 @@ import styles from "./styles.module.css";
 
 function MarkAsComplete() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const newRef = useRef<HTMLDivElement | null>(null);
+  const secondContainerRef = useRef<HTMLDivElement | null>(null);
   const { isScrollComplete } = useIsScrollComplete({ ref: containerRef });
-  const { isScrollComplete: isComplete } = useIsScrollComplete({
-    ref: newRef,
+  const { isScrollComplete: isSecondScrollComplete } = useIsScrollComplete({
+    ref: secondContainerRef,
     markAsComplete: false,
   });
 
@@ -33,7 +33,7 @@ function MarkAsComplete() {
       </div>
 
       <div style={{ display: "flex", width: "100%", flexDirection: "column" }}>
-        <div ref={newRef} className={styles["parent-div"]}>
+        <div ref={secondContainerRef} className={styles["parent-div"]}>
           <div className={styles["child-div"]}>
             {[...Array(10)].map((_, index) => (
               <p key={`key-${index}`}>Scrollable Content</p>
@@ -46,7 +46,7 @@ function MarkAsComplete() {
 
         <br />
 
-        {isComplete && (
+        {isSecondScrollComplete && (
           <p style={{ textAlign: "center" }}>Scroll is Complete ✅</p>
         )}
       </div>
