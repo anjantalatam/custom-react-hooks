@@ -31,6 +31,8 @@ function App() {
         ))}
       </div>
 
+      <p>Some text</p>
+
       <div className="m-3">
         {tabs.filter((tab) => tab.id === selectedTab)[0].component}
       </div>
