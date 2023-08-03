@@ -31,7 +31,7 @@ function App() {
         ))}
       </div>
 
-      <p>wrong text to fail workflow</p>
+      <p>Some text</p>
 
       <div className="m-3">
         {tabs.filter((tab) => tab.id === selectedTab)[0].component}
